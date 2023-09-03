@@ -1,7 +1,8 @@
 #!/usr/bin/env/ python
 #_*_ coding: utf8 _*_
 
-import dns.resolver
+#install: pip install dnspyhton (lasted version)
+import dns.resolver  
 
 class DnsInformation:
 
@@ -32,9 +33,15 @@ class DnsInformation:
 
     def GetIpv4ForDomain(self):
         try:
+            data = '0.0.0.0'
+
             answer = dns.resolver.query(self.domainName, 'A')
-            data = answer.rrset.items[0]
+
+            if answer is not None:
+                for ipval in answer:
+                    data = ipval.to_text()
             
             return data
-        except Exception:
+        except Exception as e:
+            print(f"An exception occurred: {str(e)}")
             return '0.0.0.0'

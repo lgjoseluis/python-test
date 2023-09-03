@@ -1,8 +1,8 @@
 #!/usr/bin/env/ python
 #_*_ coding: utf8 _*_$
 
+#Install: pip install python-whois
 import whois
-#import pythonwhois # Error 
 
 class DomainInformation:
     
@@ -10,7 +10,8 @@ class DomainInformation:
         self.domainName = domainName
 
     def __WhoisInformation(self):
-        result = whois.query(self.domainName)
+        print ('Domain name', self.domainName)
+        result = whois.whois(self.domainName)
         
         print('Creation date'.ljust(18, '.'),result.creation_date)
         print('Expiration date'.ljust(18,'.'), result.expiration_date)
