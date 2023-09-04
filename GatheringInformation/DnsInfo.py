@@ -33,7 +33,7 @@ class DnsInformation:
 
     def GetIpv4ForDomain(self):
         try:
-            data = '0.0.0.0'
+            data = None
 
             answer = dns.resolver.query(self.domainName, 'A')
 
@@ -44,4 +44,4 @@ class DnsInformation:
             return data
         except Exception as e:
             print(f"An exception occurred: {str(e)}")
-            return '0.0.0.0'
+            return None

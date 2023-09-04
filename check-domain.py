@@ -25,8 +25,11 @@ def LaunchProcessGathering(nameDomain):
     objWhoisInfo = WhoisInfo.DomainInformation(nameDomain)
     objWhoisInfo.GetDomainInformation(2)
 
-    objGeoIpInfo = GeoIpInfo.GeoIpInformation(nameDomain, ipV4)
-    objGeoIpInfo.GetIpInformation()
+    if ipV4 != None:
+        objGeoIpInfo = GeoIpInfo.GeoIpInformation(nameDomain, ipV4)
+        objGeoIpInfo.GetIpInformation()
+    else:
+        print('Can\'t get IP!')
 
 def main():
     if parser.target:
